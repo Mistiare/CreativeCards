@@ -6,7 +6,8 @@ public class Movement : MonoBehaviour
 {
 
     public float speed;
-    public float jumpforce;
+    public Vector2 jump;
+    public bool jumped = false;
 
     private Rigidbody2D rb;
 
@@ -16,17 +17,37 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
-        Vector2 leftright = new Vector2(moveHorizontal, 0.0f);
-        Vector2 jump = new Vector2(0.0f, moveVertical);
+        transform.position = new Vector2(transform.position.x + moveHorizontal, transform.position.y);
 
-        rb.AddForce(leftright * speed);
-        rb.AddForce(jump * jumpforce);
+        if ((Input.GetKeyDown(KeyCode.W)) & (!jumped))  //makes player jump
+        {
+            jumped = true;
+            rb.AddForce(jump, ForceMode2D.Impulse);
+
+        }
 
     }
+    void FixedUpdate()
+    {
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            jumped = false;
+        }
+
+        if (other.gameObject.tag == "Platform")
+        {
+            jumped = false;
+        }
+
+    }
+
 }
