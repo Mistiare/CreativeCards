@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
         {
             jumped = true;
             rb.AddForce(jump, ForceMode2D.Impulse);
-
+            Debug.Log("jumped");
         }
 
     }
@@ -36,18 +36,23 @@ public class Movement : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Ground")
         {
             jumped = false;
+            Debug.Log("ground hit");
         }
 
         if (other.gameObject.tag == "Platform")
         {
             jumped = false;
+            Debug.Log("platform hit");
         }
 
+        Debug.Log("object hit");
     }
+
+    
 
 }

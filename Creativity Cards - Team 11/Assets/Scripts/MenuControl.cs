@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MenuControl : MonoBehaviour
 {
     public GameObject pnlCredits;
+    public GameObject pnlPaused;
+    private bool IsPaused = false;
 
     public void Play()
     {
@@ -26,5 +28,25 @@ public class MenuControl : MonoBehaviour
     public void HideCredits()
     {
         pnlCredits.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+
+            if (IsPaused == true)
+            {
+                pnlPaused.SetActive(false);
+                Time.timeScale = 1;
+            }
+            if (IsPaused == false)
+            {
+                pnlPaused.SetActive(true);
+                Time.timeScale = 0;
+            }
+
+            IsPaused = !IsPaused;
+        }
     }
 }
