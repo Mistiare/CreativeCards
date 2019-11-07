@@ -25,7 +25,6 @@ public class TideMovement : MonoBehaviour
     {
         rb2d.velocity = new Vector2(velocity[0], rb2d.velocity[1] + acceleration[1]);
         rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxVelocity[1]);
-        Debug.Log(rb2d.velocity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
