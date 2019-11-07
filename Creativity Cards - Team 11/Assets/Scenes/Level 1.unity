@@ -1267,16 +1267,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0dd2d1558dfe914e8ba28b2737108e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformPrefab: {fileID: 0}
-  platforms:
-  - {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf, type: 3}
+  platformPrefab: {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
+    type: 3}
+  platforms: []
   numberOfPlatforms: 450
   SceneWidth: 6
-  player: {fileID: 0}
-  minPositionPlatformX: 0
-  maxPositionPlatformX: 0
+  player: {fileID: 767509161}
+  minPositionPlatformX: -7.5
+  maxPositionPlatformX: 7.5
   startHeight: 0
-  maxHeight: 0
+  maxHeight: 100
+  platformDistance: 2
 --- !u!1 &1082273298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,11 +2449,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7624713946546580401, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bd8f661b45a7024c97a259cb3cb20bf, type: 3}

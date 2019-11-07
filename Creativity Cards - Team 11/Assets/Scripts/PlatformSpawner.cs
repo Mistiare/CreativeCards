@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
-[Serializable]
-public struct Chunk
-{
-    public GameObject[] platforms;
-    public int minHeight;
-    public int maxHeight;
-}
-
 
 public class PlatformSpawner : MonoBehaviour
 {
@@ -23,7 +13,6 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField]
     private Transform player;
     private float currentPlayerHeight;
-    private List<Chunk> currentChunks = new List<Chunk>();
 
     [SerializeField]
     private float minPositionPlatformX;
@@ -34,33 +23,33 @@ public class PlatformSpawner : MonoBehaviour
     private int startHeight;
     [SerializeField]
     private int maxHeight;
-
-    private Sprite aSprite;
+    [SerializeField]
+    private float platformDistance;
 
     void Start()
     {
-        GenerateHeightList(startHeight, maxHeight, 2);
+        GeneratePlatforms(startHeight, maxHeight, platformDistance);
     }
 
 
-    private void GeneratePlatforms(int startHeight, int maxHeight, int platformDistance)
+    private void GeneratePlatforms(int startHeight, int maxHeight, float platformDistance)
     {
-        List<int> availableHeights = GenerateHeightList(startHeight, maxHeight, platformDistance);
+        List<float> availableHeights = GenerateHeightList(startHeight, maxHeight, platformDistance);
 
         for (int i = 0; i < availableHeights.Count - 1; i++)
         {
-            int height = availableHeights[UnityEngine.Random.Range(0, availableHeights.Count)];
-            availableHeights.Remove(height);
+            float height = availableHeights[i];
+            availableHeights.Remove(i);
 
             Vector2 randomHeight = new Vector2(UnityEngine.Random.Range(minPositionPlatformX, maxPositionPlatformX), height);
             SpawnPlatforms(randomHeight);
         }
     }
 
-    private List<int> GenerateHeightList(int startHeight, int maxHeight, int platformDistance)
+    private List<float> GenerateHeightList(int startHeight, int maxHeight, float platformDistance)
     {
-        List<int> availableHeights = new List<int>();
-        for (int i = startHeight; i < maxHeight; i+=platformDistance)
+        List<float> availableHeights = new List<float>();
+        for (float i = startHeight; i < maxHeight; i+=platformDistance)
         {
             availableHeights.Add(i);
         }
