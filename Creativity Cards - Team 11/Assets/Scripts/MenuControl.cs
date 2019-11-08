@@ -17,7 +17,7 @@ public class MenuControl : MonoBehaviour
     public void Quit()
     {
         Debug.Log("Quit Successful");
-        //Application.Quit();
+        Application.Quit();
     }
     
     public void ShowCredits()
@@ -32,7 +32,7 @@ public class MenuControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
 
             if (IsPaused == true)

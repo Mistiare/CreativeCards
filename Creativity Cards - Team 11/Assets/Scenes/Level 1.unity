@@ -341,6 +341,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7624713946546580400, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -491,8 +496,9 @@ GameObject:
   m_Component:
   - component: {fileID: 274766987}
   - component: {fileID: 274766986}
-  - component: {fileID: 274766985}
   - component: {fileID: 274766988}
+  - component: {fileID: 274766985}
+  - component: {fileID: 274766989}
   m_Layer: 0
   m_Name: Tide
   m_TagString: Untagged
@@ -600,6 +606,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &274766989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274766984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0398e57e477edba47a215278c800628b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &754133310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,6 +629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Platform 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7624713946546580400, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
         type: 3}
@@ -1027,6 +1050,7 @@ GameObject:
   - component: {fileID: 980291044}
   - component: {fileID: 980291043}
   - component: {fileID: 980291046}
+  - component: {fileID: 980291047}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1111,6 +1135,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 767509161}
+--- !u!114 &980291047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980291042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0398e57e477edba47a215278c800628b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1011349494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1159,7 @@ GameObject:
   - component: {fileID: 1011349496}
   - component: {fileID: 1011349495}
   - component: {fileID: 1011349498}
+  - component: {fileID: 1011349499}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -1244,6 +1281,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 0.0893749}
   m_EdgeRadius: 0
+--- !u!114 &1011349499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011349494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0dd2d1558dfe914e8ba28b2737108e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformPrefab: {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
+    type: 3}
+  platforms: []
+  numberOfPlatforms: 450
+  SceneWidth: 6
+  player: {fileID: 767509161}
+  minPositionPlatformX: -6
+  maxPositionPlatformX: 6
+  startHeight: 0
+  maxHeight: 100
+  platformDistance: 3
 --- !u!1 &1082273298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,6 +1347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Platform 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7624713946546580400, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
         type: 3}
@@ -1361,6 +1426,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Platform 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7624713946546580400, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
         type: 3}
@@ -1838,6 +1908,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7624713946546580400, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1990,6 +2065,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Platform 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624713946546580403, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7624713946546580400, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
         type: 3}
@@ -2395,11 +2475,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7624713946546580401, guid: 3bd8f661b45a7024c97a259cb3cb20bf,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bd8f661b45a7024c97a259cb3cb20bf, type: 3}
