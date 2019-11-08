@@ -6,7 +6,7 @@ public class PlatformSpawner : MonoBehaviour
     public GameObject platformPrefab;
 
     public GameObject[] platforms;
-    public int numberOfPlatforms;
+    //public int numberOfPlatforms;
     public float SceneWidth;
     private int index;
 

@@ -1050,6 +1050,7 @@ GameObject:
   - component: {fileID: 980291044}
   - component: {fileID: 980291043}
   - component: {fileID: 980291046}
+  - component: {fileID: 980291047}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1134,6 +1135,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 767509161}
+--- !u!114 &980291047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980291042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0398e57e477edba47a215278c800628b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1011349494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,11 +1299,11 @@ MonoBehaviour:
   numberOfPlatforms: 450
   SceneWidth: 6
   player: {fileID: 767509161}
-  minPositionPlatformX: -7.5
-  maxPositionPlatformX: 7.5
+  minPositionPlatformX: -6
+  maxPositionPlatformX: 6
   startHeight: 0
   maxHeight: 100
-  platformDistance: 2
+  platformDistance: 3
 --- !u!1 &1082273298
 GameObject:
   m_ObjectHideFlags: 0
