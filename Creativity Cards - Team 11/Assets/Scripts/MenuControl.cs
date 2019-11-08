@@ -17,7 +17,7 @@ public class MenuControl : MonoBehaviour
     public void Quit()
     {
         Debug.Log("Quit Successful");
-        //Application.Quit();
+        Application.Quit();
     }
     
     public void ShowCredits()
