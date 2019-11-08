@@ -32,7 +32,6 @@ public class MenuControl : MonoBehaviour
 
     void Update()
     {
-        //Don't Hardcode Billy >:(
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
