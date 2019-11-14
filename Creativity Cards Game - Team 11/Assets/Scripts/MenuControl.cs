@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuControl : MonoBehaviour
@@ -9,7 +10,7 @@ public class MenuControl : MonoBehaviour
     public GameObject pnlPaused;
     private bool IsPaused = false;
 
-    [SerializeField] CanvasGroup BlackScreen;
+    [SerializeField] Image BlackScreen;
 
     public void StartGame()
     {
@@ -35,13 +36,17 @@ public class MenuControl : MonoBehaviour
 
     IEnumerator FadeInScene()
     {
-        while (BlackScreen.alpha < 1)
-        {
-            BlackScreen.alpha += 0.4f * Time.deltaTime;
-            yield return null;
+        float alpha = 0;
+        while (BlackScreen.color.a < 1)
+        {         
+            alpha += 0.01f;
+            print(alpha);
+
+            BlackScreen.color = new Vector4(BlackScreen.color.r, BlackScreen.color.g, BlackScreen.color.b, alpha);
+            yield return new WaitForEndOfFrame();
         }
 
-        if (BlackScreen.alpha == 1) { SceneManager.LoadScene(1); }
+        if (BlackScreen.color.a > 1) { SceneManager.LoadScene(1); }
 
         yield return null;
     }
