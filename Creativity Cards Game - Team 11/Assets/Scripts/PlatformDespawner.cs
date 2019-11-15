@@ -11,6 +11,7 @@ public class PlatformDespawner : MonoBehaviour
     {
         if (col.gameObject.layer == platformMask.value)
         {
+            PlatformSpawner.Instance.spawnedPlatforms.Remove(col.gameObject);
             Destroy(col.gameObject);
         }
     }

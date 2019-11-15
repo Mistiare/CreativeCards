@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class PlatformSpawner : MonoBehaviour
 {
-    public GameObject platformPrefab;
+    public static PlatformSpawner Instance;
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(this.gameObject);
+    }
 
     public GameObject[] platforms;
+    public List<GameObject> spawnedPlatforms = new List<GameObject>();
     //public int numberOfPlatforms;
     public float SceneWidth;
     private int index;
@@ -27,24 +33,48 @@ public class PlatformSpawner : MonoBehaviour
     private int maxHeight;
     [SerializeField]
     private float platformDistance;
+    [SerializeField]
+    private float extraSpawnDistance;
+    private bool canSpawn;
 
-    void Start()
+    private void Start()
     {
+        canSpawn = true;
         GeneratePlatforms(startHeight, maxHeight, platformDistance);
     }
 
-    /*
-     * Spawns the platforms using a list of heights made in GenerateHeightList(...)
-     * once it has spawned it removes that height option from the list so that no
-     * two platforms spawn on the same height.
-     * 
-     * You'll want to use this function and provide it the starting height of the new 
-     * 'chunk' to load as well as the highest point you want to render it to until the
-     * next chunk.
-     * 
-     * You'll have to implement a script that uses the function below every so often 
-     * for performance purposes.
-     */
+    private void Update()
+    {
+        currentPlayerHeight = player.position.y;
+        ComparePlayerDistance(currentPlayerHeight, spawnedPlatforms[spawnedPlatforms.Count - 1].transform.position.y, extraSpawnDistance);
+    }
+
+    private void ComparePlayerDistance(float playerHeight, float lastPlatformHeight, float extraDistance)
+    {
+        float checkHeight = lastPlatformHeight - extraDistance;
+        if (checkHeight <= playerHeight && canSpawn)
+        {
+            canSpawn = false;
+            int highestPlatformHeight = Mathf.RoundToInt(spawnedPlatforms[spawnedPlatforms.Count - 1].transform.position.y);
+            GeneratePlatforms(Mathf.RoundToInt(highestPlatformHeight + platformDistance), maxHeight + highestPlatformHeight, platformDistance);  
+        }
+    }
+
+     /// <summary>
+     /// Spawns the platforms using a list of heights made in GenerateHeightList(...)
+     /// once it has spawned it removes that height option from the list so that no
+     /// two platforms spawn on the same height.
+     /// 
+     /// You'll want to use this function and provide it the starting height of the new 
+     /// 'chunk' to load as well as the highest point you want to render it to until the
+     /// next chunk.
+     ///
+     /// You'll have to implement a script that uses the function below every so often 
+     /// for performance purposes.
+     /// </summary>
+     /// <param name="startHeight"></param>
+     /// <param name="maxHeight"></param>
+     /// <param name="platformDistance"></param>
     private void GeneratePlatforms(int startHeight, int maxHeight, float platformDistance)
     {
         List<float> availableHeights = GenerateHeightList(startHeight, maxHeight, platformDistance);
@@ -58,6 +88,9 @@ public class PlatformSpawner : MonoBehaviour
             Vector2 randomHeight = new Vector2(UnityEngine.Random.Range(minPositionPlatformX, maxPositionPlatformX), height);
             SpawnPlatforms(randomHeight);
         }
+
+        print(canSpawn);
+        canSpawn = true;
     }
 
     //Generates a list using a minimum and maximum height. It also uses a distance to state how many platform positions are between
@@ -76,6 +109,6 @@ public class PlatformSpawner : MonoBehaviour
     //Deals with just the Platform Instantiation using a position
     private void SpawnPlatforms(Vector2 position)
     {
-        Instantiate(platformPrefab, position, Quaternion.identity);
+        spawnedPlatforms.Add(Instantiate(platforms[Random.Range(0, platforms.Length)], position, Quaternion.identity));
     }
 }

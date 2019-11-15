@@ -962,7 +962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pnlCredits: {fileID: 193286474}
   pnlPaused: {fileID: 0}
-  BlackScreen: {fileID: 418341402}
+  blackScreen: {fileID: 418341402}
 --- !u!1 &759941958
 GameObject:
   m_ObjectHideFlags: 0
