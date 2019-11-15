@@ -9,12 +9,14 @@ public class MenuControl : MonoBehaviour
     public GameObject pnlCredits;
     public GameObject pnlPaused;
     private bool IsPaused = false;
+    private Coroutine fadeCoroutine;
 
-    [SerializeField] Image BlackScreen;
+    [SerializeField] Image blackScreen;
 
     public void StartGame()
     {
-        StartCoroutine(FadeInScene());
+        if (fadeCoroutine != null) return;
+        fadeCoroutine = StartCoroutine(FadeInScene());
         Debug.Log("Coroutine Started");
     }
 
@@ -37,16 +39,15 @@ public class MenuControl : MonoBehaviour
     IEnumerator FadeInScene()
     {
         float alpha = 0;
-        while (BlackScreen.color.a < 1)
+        while (blackScreen.color.a < 1)
         {         
             alpha += 0.01f;
-            print(alpha);
 
-            BlackScreen.color = new Vector4(BlackScreen.color.r, BlackScreen.color.g, BlackScreen.color.b, alpha);
+            blackScreen.color = new Vector4(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, alpha);
             yield return new WaitForEndOfFrame();
         }
 
-        if (BlackScreen.color.a > 1) { SceneManager.LoadScene(1); }
+        if (blackScreen.color.a > 1) { SceneManager.LoadScene(1); }
 
         yield return null;
     }
